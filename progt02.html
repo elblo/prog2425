@@ -106,7 +106,7 @@
 					<ul>
 						<li>System.out.<span class="naranja">print</span>("texto");</li>
 						<li>System.out.<span class="naranja">println</span>("texto");</li>
-						<li>System.out.<span class="naranja">printf</span>("texto");</li>
+						<li>System.out.<span class="naranja">printf</span>("texto %args", arg, ...);</li>
 					</ul>
 				</section>
 
@@ -121,7 +121,7 @@
 								public static void main(String[] args) {
 									System.out.print("\033[33m mandarina"); 
 									System.out.print("\033[32m hierba"); 
-									ystem.out.print("\033[31m tomate");
+									System.out.print("\033[31m tomate");
 								} 
 							}
 						</code>
@@ -312,7 +312,7 @@
 							int asistentes = 22; 
 							long poblacion = 22L; 
 							float nota = 9.5f; 
-							double precio = 22.55d;
+							double precio = 22.55;
 						</code>
 					</pre>
 				</section>
@@ -369,7 +369,7 @@
 				<section>
 					<h2>Tipos de datos</h2>
 					<h3>Información del tipo de dato</h3>
-					<p>A continuación tienes un ejemplo para obtener información del tipio byte (Byte). En los ejercicios del tema harás el resto.</p>
+					<p>A continuación tienes un ejemplo para obtener información del tipo byte (Byte). En los ejercicios del tema harás el resto.</p>
 					<pre>
 						<code class="hljs" data-trim>
 							public static void main(String[] args) {
