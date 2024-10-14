@@ -635,7 +635,9 @@
 									// 3º) Leer texto
 									String nombre = s.next();
 									int edad = s.nextInt();
-									// OJO! Introducir decimal con coma: 1,87
+									// OJO! Introducir decimal con coma: 1,87 porque
+									// nextFloat intentará interpretar el número según 
+									// la configuración regional del sistema (española).
 									float estatura = s.nextFloat(); 
 								} 
 							}
