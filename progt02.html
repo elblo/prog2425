@@ -731,15 +731,36 @@
 				<section>
 					<h2>Operadores y expresiones</h2>
 					<h3>Operadores aritméticos</h3>
-					<p><img src="img/progt02-19.png" alt="Ejemplos operadores" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							short x = 4;
+							int y = 5;
+
+							System.out.println("El valor de x es: " + x + " y el de y: " + y);
+							System.out.println("El resultado de x + y es: " + (x+y));
+							System.out.println("El resultado de x - y es: " + (x-y));
+							System.out.println("El resultado de x * y es: " + (x*y));
+							System.out.println("El resultado x / y (división entera) es: " + (x/y));
+							System.out.println("El resto de x / y es: " + (x%y));
+						</code>
+					</pre>
 				</section>
 
 				<!-- Operadores y expresiones -->
 				<section>
 					<h2>Operadores y expresiones</h2>
 					<h3>Operadores aritméticos</h3>
-					<p>Formatear la salida para mostrar datos correctamente:</p>
-					<p><img src="img/progt02-20.png" alt="Ejemplo opciones printf" /></p>
+					<p>Formatear la salida con printf para que tenga 2 decimales y ocupe 7 caracteres en total (incluida la coma).</p>
+					<p>¿Qué ocurre si se declaran n1 y n2 como int?</p>
+					<pre>
+						<code class="hljs" data-trim>
+							float n1 = 1, n2 = 3;
+							float resultado = n1 / n2;
+							
+							System.out.println("Resultado: " + resultado);
+							System.out.printf("Resultado: %7.2f\n", resultado);
+						</code>
+					</pre>
 				</section>
 
 				<!-- Operadores y expresiones -->
@@ -747,7 +768,21 @@
 					<h2>Operadores y expresiones</h2>
 					<h3>Operadores aritméticos</h3>
 					<p>Diferencia entre operadores pre-incremento y post-incremento:</p>
-					<p><img src="img/progt02-21.png" alt="Ejemplo operadores pre y post-incremento" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							int x = 3, y;
+							int y = ++x;
+
+							System.out.println("x: " + x); 
+                            System.out.println("y: " + y); 
+
+							x = 3;
+                            y = x++;
+
+							System.out.println("x: " + x); 
+                            System.out.println("y: " + y); 
+						</code>
+					</pre>
 				</section>
 
 				<!-- Operadores y expresiones -->
@@ -777,7 +812,21 @@
 					<h2>Operadores y expresiones</h2>
 					<h3>Operadores relacionales</h3>
 					<p>Ojo, las cadenas (String) se comparan con su método <strong>.equals()</strong>.</p>
-					<p><img src="img/progt02-25.png" alt="Ejemplo comparación Strings" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							String nombre = "Manolo";
+
+							Scanner s = new Scanner(System.in);
+							System.out.println("Introduce el nombre de usuario: ");
+							String nombreUsuario = s.nextLine();
+					
+							comprobacion = (nombre == nombreUsuario);
+							System.out.println(comprobacion); // false
+					
+							comprobacion = nombre.equals(nombreUsuario);
+							System.out.println(comprobacion); // true
+						</code>
+					</pre>				
 				</section>
 
 				<!-- Operadores y expresiones -->
