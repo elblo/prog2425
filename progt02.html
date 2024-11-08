@@ -1001,11 +1001,13 @@
 					<p><strong>Conversión automática o implícita</strong>: La realiza el intérprete cuando asignamos un valor (de una variable o expresión) de menor tamaño a otro de mayor.</p>
 					<pre>
 						<code class="hljs" data-trim>
-							int coste = 10;
-							float resultado;
+							int numeroEntero = 10;
+							long numeroLong = 20L;
+							float numeroFloat = 5.0f;
 
-							resultado = coste; // conversión automática
-							System.out.println("resultado = " + resultado);
+							// Conversión Implícita o automática (pequeña a grande)
+							numeroLong = numeroEntero; // 10
+							numeroFloat = numeroEntero; // 10.0
 						</code>
 					</pre>		
 					<!-- <p><img src="img/progt02-32.png" alt="Ejemplo conversión de tipo automática" /></p> -->
@@ -1017,11 +1019,13 @@
 					<p><strong>Conversión explícita</strong>: Al hacer la conversión de un tipo con más bits a uno con menos bits. La realiza el programador mediante operador cast. Se puede producir pérdida de datos.</p>
 					<pre>
 						<code class="hljs" data-trim>
-							int coste;
-							float resultado = 10.6f;
+							int numeroEntero = 10;
+							long numeroLong = 20L;
+							float numeroFloat = 5.0f;
 
-							coste = (int) resultado; // conversión explícita
-							System.out.println("coste = " + coste);
+							// Conversión Explícita o casting (grande a pequeña)
+							numeroEntero = (int) numeroLong; // 20
+							numeroEntero = (int) numeroFloat; // 5
 						</code>
 					</pre>		
 					<!-- <p><img src="img/progt02-33.png" alt="Ejemplo conversión de tipo explícita" /></p> -->
@@ -1043,6 +1047,7 @@
 				<section>
 					<h2>Conversión de tipo</h2>
 					<p>¿Qué hace el código? ¿Cómo se soluciona?</p>
+					<p class="fragment">Con el casting podemos convertir un operando a float para que el resultado de la división sea decimal y no entero.</p>
 					<p class="fragment">media = <span class="naranja">(float)</span> (nota1 + nota2 + nota3) / 3;</p>
 					<pre>
 						<code class="hljs" data-trim>
