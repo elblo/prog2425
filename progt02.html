@@ -250,7 +250,27 @@
 				<section>
 					<h2>Variables e identificadores</h2>
 					<h3>Tipos de variables</h3>
-					<p><img src="img/progt02-05.png" alt="Tipos de variables" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							public class TiposVariables {
+								// Constantes: No se puede modificar su valor
+								final double PI = 3.1415926536;
+								// Estáticas: Pertenece a la clase (global)
+								static int x;
+							
+								static int obtenerX(int x){
+									// Local a la función
+									int valorAntiguo = x;
+									return valorAntiguo;
+								}
+							
+								public static void main(String[] args) {
+									x = 5;
+									System.out.println(obtenerX(x));
+								}
+							}
+						</code>
+					</pre>
 				</section>
 
 				<!-- Índice -->
@@ -773,14 +793,14 @@
 							int x = 3, y;
 							int y = ++x;
 
-							System.out.println("x: " + x); 
-                            System.out.println("y: " + y); 
+							System.out.println("x: " + x);
+							System.out.println("y: " + y); 
 
 							x = 3;
-                            y = x++;
+							y = x++;
 
-							System.out.println("x: " + x); 
-                            System.out.println("y: " + y); 
+							System.out.println("x: " + x);
+							System.out.println("y: " + y); 
 						</code>
 					</pre>
 				</section>
@@ -796,7 +816,28 @@
 				<section>
 					<h2>Operadores y expresiones</h2>
 					<h3>Operadores de asignación</h3>
-					<p><img src="img/progt02-23.png" alt="Ejemplo de operadores de asignación" /></p>
+					
+					<pre>
+						<code class="hljs" data-trim>
+							int x=5, y=3;
+							System.out.printf("El valor de x es %d y el de y %d\n", x, y); // 5 y 3
+
+							x+=y;
+							System.out.println("Suma combinada de x + y = " + x); // 8
+
+							x-=y;
+							System.out.println("Resta combinada de x - y = " + x); // 5
+
+							x*=y;
+							System.out.println("Producto combinado de x * y = " + x); // 15
+
+							x/=y;
+							System.out.println("División combinada de x / y = " + x); // 5
+
+							x=y;
+							System.out.println("Módulo combinado de x % y = " + x); // 3
+						</code>
+					</pre>
 				</section>
 
 				<!-- Operadores y expresiones -->
