@@ -1512,7 +1512,51 @@
 				<section>
 					<h2>Estructuras selectivas</h2>
 					<h3>Estructura switch</h3>
-					<p><img src="img/progt02-39.png" alt="Ejercicio menú áreas" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							public static void main(String[] args) { // Método main
+								var s = new Scanner(System.in);
+								System.out.println("CÁLCULO DE ÁREAS");
+								System.out.println("===============");
+								System.out.println("1. Cuadrado");
+								System.out.println("2. Rectángulo");
+								System.out.println("3. Triángulo");
+								System.out.print("\nElija una opción (1-3): ");
+								int opcion = Integer.parseInt(s.nextLine());
+								
+								double lado;
+								double base;
+								double altura;
+							
+								switch (opcion) {
+									case 1:
+										System.out.print("\nIntroduzca el lado del cuadrado en cm: ");
+										lado = Double.parseDouble(s.nextLine());
+										System.out.println("\nEl área del cuadrado es " + (lado * lado) + " cm²");
+										break;
+							
+									case 2:
+										System.out.print("\nIntroduzca la base del rectángulo en cm: ");
+										base = Double.parseDouble(s.nextLine());
+										System.out.print("Introduzca la altura del rectángulo en cm: ");
+										altura = Double.parseDouble(s.nextLine());
+										System.out.println("El área del rectángulo es " + (base * altura) + " cm²");
+										break;
+							
+									case 3:
+										System.out.print("\nIntroduzca la base del triángulo en cm: ");
+										base = Double.parseDouble(s.nextLine());
+										System.out.print("Introduzca la altura del triángulo en cm: ");
+										altura = Double.parseDouble(s.nextLine());
+										System.out.println("El área del triángulo es " + ((base * altura) / 2) + " cm²");
+										break;
+							
+									default:
+										System.out.println("\nLo siento, la opción elegida no es correcta.");
+								}
+							}							
+						</code>
+					</pre>
 				</section>
 
 				<!-- Ejercicios -->
@@ -1815,7 +1859,6 @@
 							System.out.println("Fin de programa");
 						</code>
 					</pre>	
-					<!-- <p><img src="img/progt02-46.png" alt="Ejemplo continue" /></p> -->
 				</section>
 
 				<!-- Estructuras repetitivas -->
@@ -1823,7 +1866,31 @@
 					<h2>Estructuras repetitivas</h2>
 					<h3>Estructuras de salto</h3>
 					<p>Ejemplo:</p>
-					<p><img src="img/progt02-47.png" alt="Ejemplo continue" /></p>
+					<pre>
+						<code class="hljs" data-trim>
+							String usuarios[] = {"Pablo", "Jose Manuel", "Ana", "Jesús", "Adrián", "Manu", "Marcos", "Andrés", "Sergio", "Alberto",
+												"Alexis", "Jose Luis", "Izan", "David", "Alejandro", "Flor", "Pedro"};
+
+							boolean logueado = false;
+							Scanner s = new Scanner(System.in);
+							
+							System.out.println("Bienvenido al programa");
+							System.out.print("Introduce tu usuario: ");
+							String user = s.nextLine();
+
+							for (String userTemp : usuarios) {
+								if (userTemp.equalsIgnoreCase(user)) {
+									logueado = true;
+									break; // terminamos el bucle (lo hemos encontrado)
+								}
+							}
+
+							if(logueado)
+								System.out.println("Bienvenido " + user);
+							else
+								System.out.println("Lo sentimos, no encontramos su usuario");
+						</code>
+					</pre>	
 				</section>
 
 				<!-- Para repasar -->
