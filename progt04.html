@@ -235,7 +235,47 @@
 					<h2>Cadenas de caracteres</h2>
 					<h3>Operaciones</h3>
 					<p>Solución</p>					
-					<p><img src="img/progt05-04.png" alt="Solución ejercicio separar nombre completo" /></p>
+					<pre>
+						<code class="hljs" data-trim> 
+							Scanner s = new Scanner(System.in);
+							String palabra1 = "No hay palabra";
+							String palabra2 = "No hay palabra";
+							String palabra3 = "No hay palabra";
+
+							boolean terminado = false; // Para detectar cuando no hay más espacios y terminar
+							int contador = 0; // Para controlar cuántas palabras hay
+							int posEspacio;
+
+							System.out.print("Hola, introduce tu nombre completo, separado por espacios: ");
+							String nombreCompleto = s.nextLine();
+							palabra1 = nombreCompleto; // Por si no hay ningún espacio
+
+							while(!terminado) { // Mientras que siga encontrando espacios
+								for (int i=0; i<nombreCompleto.length(); i++) {
+									if (Character.isWhitespace(nombreCompleto.charAt(i))) {
+										posEspacio = i;
+										if (contador == 0) { // Primera palabra
+											palabra1 = nombreCompleto.substring(0, posEspacio); // Saco la primera palabra
+											nombreCompleto = nombreCompleto.substring(posEspacio + 1); // La quito del nombre completo
+											palabra2 = nombreCompleto; // Por si no hay más espacios
+										}
+										if (contador == 1) { // Segunda palabra
+											palabra2 = nombreCompleto.substring(0, posEspacio); // La saco
+											palabra3 = nombreCompleto.substring(posEspacio + 1); // Saco la tercera
+											terminado = true; // He terminado
+										}
+										contador++;
+										break; // No sigo el bucle for
+									}
+									if(i+1 == nombreCompleto.length()) terminado = true; // Si termino de recorrer la palabra, es que no hay más espacios
+								}
+							}
+
+							System.out.println("Palabra1 = " + palabra1);
+							System.out.println("Palabra2 = " + palabra2);
+							System.out.println("Palabra3 = " + palabra3);
+						</code>
+					</pre> 
 				</section>
 
 				<!-- Cadenas de caracteres -->
@@ -301,8 +341,7 @@
 							float total = unidades * precioUnidad;
 							// Cada valor numérico se muestra con un ancho total de 8 espacios
 							String mensaje = String.format("Producto: %s; Unidades: %8d; Precio por unidad: %8.2f €; Total: %8.2f €", descripcion, unidades, precioUnidad, total);
-							System.out.println(mensaje);
-							Producto: Lavadora; Unidades:       10; Precio por unidad:   302,40 €; Total:  3024,00 €
+							System.out.println(mensaje); // Producto: Lavadora; Unidades:       10; Precio por unidad:   302,40 €; Total:  3024,00 €
 						</code>
 					</pre> 
 				</section>
@@ -337,7 +376,34 @@
 				<section>
 					<h2>Cadenas de caracteres</h2>
 					<h3>Leer fichero y guardarlo en String</h3>			
-					<p><img src="img/progt05-07.png" alt="Ejemplo leer fichero" /></p>
+					<pre>
+						<code class="hljs" data-trim> 
+							public static String leeFichero(String archivo) throws IOException {
+								String texto = "", cadena = "";
+								FileReader f = new FileReader(archivo);
+								BufferedReader b = new BufferedReader(f);
+								cadena = b.readLine();
+								while(cadena!=null){
+									//System.out.println(cadena);
+									texto = texto + cadena + "\n";
+									cadena = b.readLine();
+								}
+								b.close();
+								return texto;
+							}
+						
+							public static void main(String[] args) {
+								String contenido="";
+								try {
+									// NOTA: Ubicar "prueba.txt" en la RAÍZ DEL PROYECTO
+									contenido = leeFichero("prueba.txt");
+								} catch (IOException e) {
+									System.out.println("No he podido encontrar el fichero");
+								}
+								System.out.println(contenido);
+							}
+						</code>
+					</pre> 
 				</section>
 
 				<!-- Cadenas de caracteres -->
