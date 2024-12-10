@@ -251,7 +251,7 @@
 							palabra1 = nombreCompleto; // Por si no hay ningún espacio
 
 							while(!terminado) { // Mientras que siga encontrando espacios
-								for (int i=0; i<nombreCompleto.length(); i++) {
+								for (int i=0; i < nombreCompleto.length(); i++) {
 									if (Character.isWhitespace(nombreCompleto.charAt(i))) {
 										posEspacio = i;
 										if (contador == 0) { // Primera palabra
