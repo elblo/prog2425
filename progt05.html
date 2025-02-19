@@ -70,6 +70,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -93,6 +94,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 			
@@ -218,6 +220,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -479,6 +482,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -597,6 +601,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -795,6 +800,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -931,6 +937,7 @@
 						<li class="fragment highlight-blue">Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -1192,6 +1199,7 @@
 						<li>Constructores</li>
 						<li class="fragment highlight-blue">Empaquetado de clases</li>
 						<li>Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -1289,6 +1297,7 @@
 						<li>Constructores</li>
 						<li>Empaquetado de clases</li>
 						<li class="fragment highlight-blue">Arrays estáticos de objetos</li>
+						<li>Tipos enumerados</li>
 					</ol>
 				</section>
 
@@ -1352,6 +1361,198 @@
 					<h2>Arrays estáticos de objetos</h2>
 					<p>Ejercicio: App Colección discos (ejercicio 3 de la relación 3)</p>
 					<p><img src="img/progt05-23.png" alt="App Colección Discos" /></p>
+				</section>
+
+				<!-- Índice -->
+				<section>
+					<h2>Índice</h2>
+					<ol>
+						<li>Introducción</li>
+						<li>Fundamentos de la POO</li>
+						<li>Estructura de una clase</li>
+						<li>Atributos</li>
+						<li>Métodos</li>
+						<li>Encapsulación, control de acceso y visibilidad</li>
+						<li>Constructores</li>
+						<li>Empaquetado de clases</li>
+						<li>Arrays estáticos de objetos</li>
+						<li class="fragment highlight-blue">Tipos enumerados</li>
+					</ol>
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<p>Los tipos enumerados (enum) en Java son una característica que permite definir un conjunto fijo de constantes con nombres significativos. Se utilizan cuando un valor puede tomar uno de un conjunto limitado de posibilidades, mejorando la legibilidad y seguridad del código.</p>
+					<p>Un enum es una clase especial en Java que hereda implícitamente de <em>java.lang.Enum</em> y no puede heredar de otras clases.</p>
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Definición</h3>
+					<p>Se define usando la palabra clave enum, seguida del nombre y los valores constantes:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+							public enum DiaSemana {
+								LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO;
+							}
+						</code>
+					</pre>	
+					<p>Cada uno de estos valores es una instancia de DiaSemana.</p>
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Uso básico</h3>
+					<p>Los enum pueden usarse de manera similar a los tipos primitivos:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+							public class TestDiaSemana {
+								public static void main(String[] args) {
+									DiaSemana dia = DiaSemana.LUNES;
+									System.out.println("Hoy es " + dia);
+								}
+							}
+						</code>
+					</pre>	
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Uso en un switch</h3>
+					<pre>
+						<code class="hljs" data-trim> 
+							DiaSemana dia = DiaSemana.MIERCOLES;
+        
+							switch (dia) {
+								case LUNES:
+									System.out.println("Inicio de la semana");
+									break;
+								case VIERNES:
+									System.out.println("Fin de la semana laboral");
+									break;
+								case SABADO:
+								case DOMINGO:
+									System.out.println("Fin de semana");
+									break;
+								default:
+									System.out.println("Día normal");
+							}
+						</code>
+					</pre>	
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Uso en una clase</h3>
+					<pre>
+						<code class="hljs" data-trim> 
+							public class Persona {
+								private String nombre;
+								private DiaSemana diaLibre;
+								
+								public Persona(String nombre, DiaSemana diaLibre) {
+									this.nombre = nombre;
+									this.diaLibre = diaLibre;
+								}
+								
+								public void mostrarInfo() {
+									System.out.println(nombre + " tiene el " + diaLibre + " libre.");
+								}
+							}
+							
+							public class TestPersona {
+								public static void main(String[] args) {
+									Persona p = new Persona("Juan", DiaSemana.DOMINGO);
+									p.mostrarInfo();
+								}
+							}
+						</code>
+					</pre>	
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Métodos útiles</h3>
+					<ul>
+						<li><strong>values()</strong>: devuelve un array con todas las constantes de la enumeración.</li>
+						<li><strong>valueOf(String)</strong>: Devuelve la constante de la enumeración que corresponde al string pasado por argumento.</li>
+						<li><strong>ordinal()</strong>: Devuelve la posición en la que se ha definido (entero).</li>
+					</ul>
+					<pre>
+						<code class="hljs" data-trim> 
+							// Obtener todos los valores
+							for (DiaSemana d : DiaSemana.values()) {
+								System.out.println(d);
+							}
+							
+							// Obtener un enum a partir de una cadena
+							DiaSemana dia = DiaSemana.valueOf("VIERNES");
+							System.out.println("El día seleccionado es: " + dia);
+
+							// Obtener el ordional del valor
+							int posicion = dia.ordinal(); // 4
+						</code>
+					</pre>	
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Métodos y Propiedades en un Enum</h3>
+					<p>Los enumerados pueden contener atributos y métodos. Por ejemplo:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+							public enum Nivel {
+								BAJO(100), MEDIO(2000), ALTO(5000), EXPERTO(10000);  
+								
+								private int horas; // 100, 2000, 5000 o 10000
+								// Se podrían añadir más atributos
+								
+								// Constructor
+								Nivel(int horas){ this.horas = horas; }
+								
+								public int getHoras() { return horas; }
+							}
+						</code>
+					</pre>	
+					<p>Uso:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+							public class TestNivel {
+								public static void main(String[] args) {
+									Nivel nivelJava = Nivel.MEDIO;
+									System.out.println("Nivel: " + nivelJava + " con más de " + n.getHoras() + " horas.");
+								}
+							}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Ejercicio</h3>
+					<p>Crea un enum <strong>Mes</strong> para representar los 12 meses del año. Cada uno, además tendrá un valor que será los días del propio mes (sin tener en cuenta años bisiestos).</p>
+					<p>Prueba el enum en una clase <strong>TestMes</strong> haciendo lo siguiente:</p>
+					<ul>
+						<li>Mostrar todos los valores del enum junto a sus horas (usando values()).</li>
+						<li>Dado un mes, mediante un switch informar a qué trimestre pertenece, o si es vacaciones.</li>
+						<li>Pedir al usuario una fecha, extraer el mes en formato cadena y mediante valueOf() asignar el valor al tipo enumerado.</li>
+					</ul>
+				</section>
+
+				<!-- Tipos enumerados -->
+				<section>
+					<h2>Tipos enumerados</h2>
+					<h3>Conclusión</h3>
+					<p>Los tipo de datos enumerados en Java y en cualquier otro lenguaje son una herramienta poderosa para definir valores constantes con significado. Mejoran la legibilidad del código, evitan errores y pueden incluir atributos y métodos para hacerlos más flexibles.</p>
+					<p>Úsalos siempre que puedas, es una buena práctica de programación.</p>
 				</section>
 
 				<!-- Para repasar -->
