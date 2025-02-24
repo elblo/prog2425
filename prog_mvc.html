@@ -224,7 +224,7 @@
 					<p><strong>4. Programa principal</strong>: Conectamos los componentes y probamos el patrón MVC.</p>
 					<pre>
 						<code class="hljs" data-trim>
-							public class MVCDemo {
+							public class EstudianteApp {
 								public static void main(String[] args) {
 									// Crear modelo
 									Estudiante modelo = new Estudiante("Juan Perez", 20);
@@ -244,6 +244,65 @@
 									
 									// Actualizar vista con nuevos datos
 									controlador.actualizarVista();
+								}
+							}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Ejemplo básico con una clase base -->
+				<section>
+					<h2>Ejemplo básico con una clase base</h2>
+					<p><strong>4. Programa principal</strong>: Si necesitamos un menú e interactuar con el usuario pidiéndole datos, también iría en esta clase.</p>
+					<pre>
+						<code class="hljs" data-trim>
+							public class EstudianteApp {
+								public static void main(String[] args) {
+									Scanner scanner = new Scanner(System.in);
+							
+									// Pedir datos iniciales del estudiante
+									System.out.print("Introduce el nombre del estudiante: ");
+									String nombre = scanner.nextLine();
+									
+									System.out.print("Introduce la edad del estudiante: ");
+									int edad = Integer.parseInt(scanner.nextLine());
+							
+									// Crear modelo, vista y controlador
+									Estudiante modelo = new Estudiante(nombre, edad);
+									EstudianteVista vista = new EstudianteVista();
+									EstudianteControlador controlador = new EstudianteControlador(modelo, vista);
+							
+									int opcion;
+									do {
+										System.out.println("\n--- MENÚ ---");
+										System.out.println("1. Mostrar estudiante");
+										System.out.println("2. Modificar nombre");
+										System.out.println("3. Modificar edad");
+										System.out.println("4. Salir");
+										System.out.print("Seleccione una opción: ");
+										opcion = Integer.parseInt(scanner.nextLine());
+							
+										switch (opcion) {
+											case 1:
+												controlador.actualizarVista();
+												break;
+											case 2:
+												System.out.print("Nuevo nombre: ");
+												String nuevoNombre = scanner.nextLine();
+												controlador.setNombreEstudiante(nuevoNombre);
+												break;
+											case 3:
+												System.out.print("Nueva edad: ");
+												int nuevaEdad = Integer.parseInt(scanner.nextLine());
+												controlador.setEdadEstudiante(nuevaEdad);
+												break;
+											case 4:
+												System.out.println("Saliendo...");
+												break;
+											default:
+												System.out.println("Opción no válida. Intente de nuevo.");
+										}
+									} while (opcion != 4);
 								}
 							}
 						</code>
@@ -410,7 +469,7 @@
 					<p><strong>4. Programa principal</strong>: Conectamos los componentes y probamos el patrón MVC.</p>
 					<pre>
 						<code class="hljs" data-trim>
-							public class MVCDemo {
+							public class EstudianteApp {
 								public static void main(String[] args) {
 									// Crear modelo
 									Estudiante modelo = new Estudiante("Juan Perez", 20, 5);
@@ -435,6 +494,27 @@
 									
 									// Actualizar vista con nuevos datos
 									controlador.actualizarVista();
+								}
+							}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Ejemplo completo con varias clases base -->
+				<section>
+					<h2>Ejercicio</h2>
+					<p>Modifica la clase <em>EstudianteApp</em> para interactuar con el usuario mediante un menú. Fíjate en el ejemplo del caso con una clase base.</p>
+					<pre>
+						<code class="hljs" data-trim>
+							public class EstudianteApp {
+								public static void main(String[] args) {
+									// Menú con opciones:
+									// 1. Agregar estudiante									
+									// 2. Modificar estudiante (nombre y edad)
+									// 3. Agregar asignatura
+									// 4. Desvincular asignatura (tendrás que tocar modelo y controlador también)
+									// 5. Mostrar datos del estudiante
+									// 6. Salir
 								}
 							}
 						</code>
