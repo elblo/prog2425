@@ -479,8 +479,8 @@
 						<code class="hljs" data-trim>
 							public class EstudianteApp {
 								public static void main(String[] args) {
-									// Crear modelo
-									Estudiante modelo = new Estudiante("Juan Perez", 20, 5);
+									// Crear modelo (simulando su recuperación de BD)
+									Estudiante modelo = getEstudianteFromDB();
 									
 									// Crear vista
 									EstudianteVista vista = new EstudianteVista();
@@ -502,6 +502,11 @@
 									
 									// Actualizar vista con nuevos datos
 									controlador.actualizarVista();
+								}
+
+								private static Estudiante getEstudianteFromDB(){
+									Estudiante estudiante = new Estudiante("Juan Perez", 20, 5);
+									return estudiante;
 								}
 							}
 						</code>
