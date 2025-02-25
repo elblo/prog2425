@@ -65,6 +65,8 @@
 						<li>Ventajas</li>
 						<li>Ejemplo básico con una clase base</li>
 						<li>Ejemplo completo con varias clases base</li>
+						<li>Consideraciones finales</li>
+						<li>Ejercicios</li>
 					</ol>
 				</section>
 
@@ -93,6 +95,8 @@
 						<li class="fragment highlight-blue">Ventajas</li>
 						<li>Ejemplo básico con una clase base</li>
 						<li>Ejemplo completo con varias clases base</li>
+						<li>Consideraciones finales</li>
+						<li>Ejercicios</li>
 					</ol>
 				</section>
 
@@ -124,6 +128,8 @@
 						<li>Ventajas</li>
 						<li class="fragment highlight-blue">Ejemplo básico con una clase base</li>
 						<li>Ejemplo completo con varias clases base</li>
+						<li>Consideraciones finales</li>
+						<li>Ejercicios</li>
 					</ol>
 				</section>
 
@@ -317,6 +323,8 @@
 						<li>Ventajas</li>
 						<li>Ejemplo básico con una clase base</li>
 						<li class="fragment highlight-blue">Ejemplo completo con varias clases base</li>
+						<li>Consideraciones finales</li>
+						<li>Ejercicios</li>
 					</ol>
 				</section>
 
@@ -502,7 +510,8 @@
 
 				<!-- Ejemplo completo con varias clases base -->
 				<section>
-					<h2>Ejercicio</h2>
+					<h2>Ejemplo completo con varias clases base</h2>
+					<h3>Ejercicio: Ampliación</h3>
 					<p>Modifica la clase <em>EstudianteApp</em> para interactuar con el usuario mediante un menú. Fíjate en el ejemplo del caso con una clase base.</p>
 					<pre>
 						<code class="hljs" data-trim>
@@ -526,33 +535,97 @@
 					<h2>Ejemplo completo con varias clases base</h2>
 					<p>Resumen:</p>
 					<ul>
-						<li>Se crea un objeto <strong>Estudiante</strong> con un array de asignaturas.</li>
 						<li>Se define <strong>Asignatura</strong> para representar cada materia con nombre y créditos.</li>
+						<li>Se crea un objeto <strong>Estudiante</strong> con un array de asignaturas.</li>
 						<li>La clase <strong>EstudianteVista</strong> muestra los datos en la consola, incluyendo las asignaturas.</li>
 						<li>El <strong>EstudianteControlador</strong> permite modificar el modelo y actualizar la vista.</li>
 						<li>En <strong>EstudianteApp</strong>, se instancian los componentes y se manipulan los datos a través del controlador.</li>
 					</ul>
 				</section>
 
+				<!-- Índice -->
+				<section>
+					<h2>Índice</h2>
+					<ol>
+						<li>Introducción</li>
+						<li>Ventajas</li>
+						<li>Ejemplo básico con una clase base</li>
+						<li>Ejemplo completo con varias clases base</li>
+						<li class="fragment highlight-blue">Consideraciones finales</li>
+						<li>Ejercicios</li>
+					</ol>
+				</section>
+
+				<!-- Consideraciones finales -->
+				<section>
+					<h2>Consideraciones finales</h2>
+					<h3>¿Realmente es práctico este patrón?</h3>
+					<ul>
+						<li>Los ejemplos proporcionados son muy sencillos con el objetivo de ilustrar el uso del patrón MVC, pero no son prácticos.</li>
+						<li>Para el modelo es más común tener una o varias clases que se inician sin datos, piensa en <em>EstudiantesGestion</em> o similar con un array de estudiantes (inicialmente con 0). En los siguientes ejercicios lo harás así.</li>
+						<li>Con una vista en consola estamos muy limitados, pero se le podrían añadir atributos para trabajar con diferentes colores, tema (claro u oscuro)...</li>
+						<li>Una práctica común es agrupar las clases en subpaquetes: modelo, vista o controlador.</li>
+					</ul>
+				</section>
+
+				<!-- Consideraciones finales -->
+				<section>
+					<h2>Consideraciones finales</h2>
+					<h3>¿Y podrían crearse modelo y vista directamente en el controlador?</h3>
+					<p>Sí, en aplicaciones pequeñas podrían instanciarse directamente dentro del controlador, siempre que no vayan a cambiar y usemos este patrón por motivos de organización.</p>
+					<p>Pero, en aplicaciones medianas o grandes, donde se necesita escalabilidad y facilidad de modificación, pasar el modelo y la vista ya creados al constructor del controlador, tiene muchas ventajas:</p>
+					<ul>
+						<li>Mejora la flexibilidad al permitir reutilizar diferentes vistas y modelos.</li>
+						<li>Facilita la separación de responsabilidades evitando que el controlador instancie objetos.</li>
+						<li>Simplifica las pruebas unitarias al permitir inyectar dependencias de prueba (otros modelos específicos).</li>
+						<li>Reduce el acoplamiento, haciendo que el código sea más modular y mantenible.</li>
+					</ul>
+				</section>
+
+				<!-- Índice -->
+				<section>
+					<h2>Índice</h2>
+					<ol>
+						<li>Introducción</li>
+						<li>Ventajas</li>
+						<li>Ejemplo básico con una clase base</li>
+						<li>Ejemplo completo con varias clases base</li>
+						<li>Consideraciones finales</li>
+						<li class="fragment highlight-blue">Ejercicios</li>
+					</ol>
+				</section>
+
 				<!-- Ejercicios -->
 				<section>
 					<h2>Ejercicios</h2>
                     <h3>Ejercicio 1: Gestor de tareas</h3>
-					<p>Implementa un gestor de tareas donde los usuarios puedan agregar, listar y marcar tareas como completadas. Utiliza las siguientes clases:</p>
+					<p>Implementa un gestor de tareas donde los usuarios puedan agregar, listar y marcar tareas como completadas. Utiliza las siguientes clases:</p>				
+				</section>
+
+				<!-- Ejercicios -->
+				<section>
+					<h2>Ejercicios</h2>
+                    <h3>Ejercicio 1: Gestor de tareas</h3>
 					<ul>
 						<li><strong>Modelo</strong> (Tarea.java): Atributos: id, descripcion, completada (booleano). Métodos: getters/setters, marcarComoCompletada().</li>
-						<li><strong>Modelo</strong> (TareaModelo.java): Atributos: array de Tareas. Métodos: agregar tareas, buscarla, marcarla como completada...</li>
-						<li><strong>Vista</strong> (TareaVista.java): Métodos para mostrar una lista de tareas y mensajes al usuario.</li>
-						<li><strong>Controlador</strong> (TareaControlador.java): Métodos para agregar una tarea, marcarla como completada y mostrar la lista.</li>
-					</ul>
+						<li><strong>Modelo</strong> (GestorTareas.java): Atributos: array de Tareas. Métodos: agregar tareas, buscarla, marcarla como completada...</li>
+						<li><strong>Vista</strong> (GestorTareasVista.java): Métodos para mostrar una lista de tareas y mensajes al usuario. Atributos: emojiCompletada y emojiNoCompletada.</li>
+						<li><strong>Controlador</strong> (GestorTareasControlador.java): Métodos para agregar una tarea, marcarla como completada y mostrar la lista.</li>
+					</ul>				
+				</section>
+
+				<!-- Ejercicios -->
+				<section>
+					<h2>Ejercicios</h2>
+                    <h3>Ejercicio 1: Gestor de tareas</h3>
 					<p>Ejemplo de uso:</p>
 					<pre>
 						<code class="hljs" data-trim>
 							public class Main {
 								public static void main(String[] args) {
-									TareaModelo modelo = new TareaModelo();
-									TareaVista vista = new TareaVista();
-									TareaControlador controlador = new TareaControlador(modelo, vista);
+									GestorTareas modelo = new GestorTareas();
+									GestorTareasVista vista = new GestorTareasVista("✅", "❌");
+									GestorTareasControlador controlador = new GestorTareasControlador(modelo, vista);
 							
 									controlador.agregarTarea("Estudiar Java");
 									controlador.agregarTarea("Hacer ejercicio");
@@ -570,10 +643,16 @@
 					<h2>Ejercicios</h2>
                     <h3>Ejercicio 2: Carrito de tienda online</h3>
 					<p>Implementa un carrito para una tienda online al que se pueda añadir, quitar o listar productos. Utiliza las siguientes clases:</p>
+				</section>
+
+				<!-- Ejercicios -->
+				<section>
+					<h2>Ejercicios</h2>
+                    <h3>Ejercicio 2: Carrito de tienda online</h3>
 					<ul>
-						<li><strong>Modelo</strong> (Producto.java): Atributos id, descripcion, prcio. Métodos: getters/setters.</li>
+						<li><strong>Modelo</strong> (Producto.java): Atributos id, descripcion, precio. Métodos: getters/setters.</li>
 						<li><strong>Modelo</strong> (Carrito.java): Atributos: array de Productos. Métodos: añadir o quitar productos, buscarlos, devolver precio total...</li>
-						<li><strong>Vista</strong> (CarritoVista.java): Métodos para mostrar el listado de productos y mensajes al usuario.</li>
+						<li><strong>Vista</strong> (CarritoVista.java): Métodos para mostrar el listado de productos y mensajes al usuario. Atributo: colorTexto.</li>
 						<li><strong>Controlador</strong> (CarritoControlador.java): Métodos para agregar un producto, quitarlo y mostrarlos.</li>
 					</ul>
 				</section>
