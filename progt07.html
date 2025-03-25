@@ -349,14 +349,6 @@
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
 					<p>ArrayList. Almacenar objetos</p>
-					<p><img src="img/progt05-38.png" alt="ArrayList objetos" /></p>
-				</section>
-
-				<!-- Colecciones -->
-				<section>
-					<h2>Colecciones</h2>
-					<h3>Listas</h3>
-					<p>ArrayList. Almacenar objetos</p>
 					<p><img src="img/progt05-39.png" alt="ArrayList objetos" /></p>
 				</section>
 
@@ -372,38 +364,95 @@
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación <span class="naranja">Collection.sort(lista)</span></p>
-					<p>Para ordenar con una lista de objetos, antes hay que definir el criterio de ordenación en su clase implementando la interfaz <span class="rosa">Comparable</span> y redefiniendo el método <span class="violeta">compareTo</span>.</p>
-					<p><img src="img/progt05-41.png" alt="ArrayList ordenación objetos" /></p>
+					<p>Ordenación personalizada de objetos. <strong>Método 1</strong>:</p>
+					<ol>
+						<li>En la clase a ordenar se implementa la interfaz <span class="rosa">Comparable</span> y se define el método <span class="violeta">compareTo</span> con el criterio de ordenación.</li>
+						<li>Utilizar <span class="naranja">Collection.sort(lista)</span> para ordenar el listado de objetos.</li>
+					</ol>
 				</section>
 
 				<!-- Colecciones -->
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación <span class="naranja">Collection.sort(lista)</span></p>
-					<p>¿Cómo lo ordenarías por raza? ¿Y por color?</p>
-					<p><img src="img/progt05-42.png" alt="ArrayList ordenación objetos" /></p>
-				</section>
-
-				<!-- Colecciones -->
-				<section>
-					<h2>Colecciones</h2>
-					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante <span class="naranja">clase y Comparator</span>.</p>
-					<p>1) Crear una clase que implemente la interafaz <span class="rosa">Comparator</span> y redefina el método <span class="violeta">compare</span>.</p>
+					<p>Ordenación personalizada de objetos. <strong>Método 1</strong>:</p>
+					<p>1. Implementar la interfaz y redefinir <span class="violeta">compareTo</span>.</p>
 					<pre>
-						<code class="hljs" data-trim> 
-						public class MayorAMenor implements Comparator&lt;Integer&gt; {
-							// Devuelve:
-							// POSITIVO si el primer número es menor que el segundo
-							// CERO si son iguales
-							// NEGATIVO si el primer número es mayor que el segundo
+						<code class="hljs" data-trim>
+							// Implementar la interfaz Comparable para poder ordenar elementos de esta clase 
+							public class Gato implements Comparable&lt;Gato&gt; {
+								
+								// Definir en compareTo el criterio de ordenación
+								// Devuelve un número entero negativo, 0 o positivo si el 
+								// objeto actual es menor, igual o mayor que el objeto pasado como argumento								
+								public int compareTo(Gato gato) {
+									return this.peso - gato.peso;
+								}
+							}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Colecciones -->
+				<section>
+					<h2>Colecciones</h2>
+					<h3>Listas</h3>
+					<p>Ordenación personalizada de objetos. <strong>Método 1</strong>:</p>
+					<p>2. Utilizar <span class="naranja">Collection.sort(lista)</span> para ordenar.</p>
+					<pre>
+						<code class="hljs" data-trim>
+							Gato gato1 = new Gato("Garfield", "naranja", "común", 10);
+							Gato gato2 = new Gato("Mishi", "naranja", "común", 5);
+							Gato gato3 = new Gato("Hello kitty", "blanco", "japo", 7);
+
+							ArrayList&lt;Gato&gt; gatos = new ArrayList&lt;Gato&gt;();
+							gatos.add(gato1);
+							gatos.add(gato2);
+							gatos.add(gato3);
+
+							System.out.println(gatos);
+
+							// Ordenar por peso
+							Collections.sort(gatos);
+
+							System.out.println(gatos);
+						</code>
+					</pre>
+				</section>
+
+				<!-- Colecciones -->
+				<section>
+					<h2>Colecciones</h2>
+					<h3>Listas</h3>
+					<p>Ordenación personalizada de objetos. <strong>Método 1</strong>:</p>
+					<p><strong>Ejercicio</strong>: Aplica diferentes ordenaciones: Por nombre, raza y peso, tanto ascendentemente como descendentemente.</p>
+				</section>
+
+				<!-- Colecciones -->
+				<section>
+					<h2>Colecciones</h2>
+					<h3>Listas</h3>
+					<p>Ordenación personalizada de objetos. <strong>Método 2</strong>:</p>
+					<ol>
+						<li>Crear una clase que implemente la interafaz <span class="rosa">Comparator</span> y redefina el método <span class="violeta">compare</span>.</li>
+						<li>Llamar al método <span class="violeta">sort</span> de la propia lista pasándole una instancia de la clase anterior.</li>
+					</ol>
+				</section>
+
+				<!-- Colecciones -->
+				<section>
+					<h2>Colecciones</h2>
+					<h3>Listas</h3>
+					<p>Ordenación personalizada de objetos. <strong>Método 2</strong>:</p>
+					<p>1. Crear la clase con el método <span class="violeta">compare</span>.</p>
+					<pre>
+						<code class="hljs" data-trim>
+							public class PesoMenosMas implements Comparator&lt;Gato&gt; {
 						
-							public int compare(Integer o1, Integer o2){
-								return -(o1-o2);
+								public int compare(Gato o1, Gato o2) {
+									return o1.getPeso() - o2.getPeso();
+								}
 							}
-						}
 						</code>
 					</pre>
 				</section>
@@ -412,18 +461,11 @@
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante <span class="naranja">clase y Comparator</span>.</p>
-					<p>2) Llamar al método <span class="violeta">sort</span> de Collections o la propia lista pasándole una instancia de la clase anterior.</p>
+					<p>Ordenación personalizada de objetos. <strong>Método 2</strong>:</p>
+					<p>2. Llamar al método <span class="violeta">sort</span> de la lista pasándole una instancia de la clase anterior.</p>
 					<pre>
-						<code class="hljs" data-trim> 
-						public static void main(String[] args) {
-												
-							List&lt;Integer&gt; lista = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
-																	
-							// Ordenar de mayor a menor
-							lista.sort(new MayorAMenor());
-							System.out.println(lista);
-						}
+						<code class="hljs" data-trim>
+							gatos.sort(new PesoMenosMas());
 						</code>
 					</pre>
 				</section>
@@ -432,85 +474,45 @@
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante <span class="naranja">clase anónima</span>.</p>
-					<p>Llamar al método <span class="violeta">sort</span> de Collections o la propia lista pasándole una instancia de la clase anónima.</p>
-					<pre>
-						<code class="hljs" data-trim> 
-						lista.sort(new Comparator&lt;Integer&gt;() {
-							@Override
-							public int compare(Integer o1, Integer o2) {
-								return -(o1-o2);
-							}
-						});
-						</code>
-					</pre>
+					<p>Ordenación personalizada de objetos. <strong>Método 2</strong>:</p>
+					<p><strong>Ejercicio</strong>: Crea las clases necesarias para ordenarlos por nombre, raza y peso tanto ascendemente como descendentemente.</p>
 				</section>
 
 				<!-- Colecciones -->
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante <span class="naranja">clase anónima</span>.</p>
-					<p>Otro ejemplo:</p>
-					<p><img src="img/progt05-43.png" alt="ArrayList ordenación Comparator" /></p>
-				</section>
-
+					<p>Ordenación personalizada de objetos. <strong>Método 2</strong>:</p>
+					<p><strong>Variante</strong>: Utilizar directamente una <span class="naranja">clase anónima</span> en la llamada a <span class="violeta">sort</span>. Ahorramos definir la clase.</p>
+					<pre>
+						<code class="hljs" data-trim>
+							gatos.sort(new Comparator&lt;Gato&gt;(){
+								public int compare(Gato o1, Gato o2) {
+									return o1.getPeso() - o2.getPeso();
+								}
+							});
+						</code>
+					</pre>
+				</section>				
+				
 				<!-- Colecciones -->
 				<section>
 					<h2>Colecciones</h2>
 					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante <span class="naranja">función lambda</span>.</p>
-					<p>Llamar al método <span class="violeta">sort</span> de Collections o la propia lista pasándole una función lambda.</p>
+					<p>Ordenación personalizada de objetos. <strong>Método 3</strong>:</p>
+					<p>Llamar al método <span class="violeta">sort</span> de la lista pasándole una <span class="naranja">función lambda</span>.</p>
 					<pre>
 						<code class="hljs" data-trim> 
-						// Los tipos de los argumentos se infieren de la lista
-						lista.sort((o1, o2) -> {
-							return -(o1-o2);
-						});
-
-						// Mejor así:
-						lista.sort((o1, o2) -> -(o1-o2));
+							// Los tipos de los argumentos se infieren de la lista
+							lista.sort((o1, o2) -> {
+								return o1.getPeso() - o2.getPeso();
+							});
+	
+							// Si la función tiene una sola línea, se pueden quitar las llaves y el return. Mejor así:
+							gatos.sort((o1, o2) -> o1.getPeso() - o2.getPeso());
 						</code>
 					</pre>
 				</section>
-
-				<!-- Colecciones 
-				<section>
-					<h2>Colecciones</h2>
-					<h3>Listas</h3>
-					<p>ArrayList. Ordenación mediante función lambda</p>
-					<pre>
-						<code class="hljs" data-trim> 
-						ArrayList&lt;Integer&gt; a = new ArrayList&lt;Integer&gt;();
-						a.add(67); a.add(78); a.add(10); a.add(4);
-
-						// 1) Ordenar mediante Collections
-						Collections.sort(a);
-
-						// 1) Ordenar mediante Collections en orden descendente
-						Collections.sort(a, new Comparator&lt;Integer&gt;(){
-							@Override
-							public int compare(Integer o1, Integer o2) {
-								return o2-o1;
-							}
-						});
-
-						// 2) Ordenar directamente con el método sort del ArrayList en orden descendente
-						a.sort(new Comparator&lt;Integer&gt;(){
-							@Override
-							public int compare(Integer o1, Integer o2) {
-								return o2-o1;
-							}
-						});
-
-						// 3) Ordendar con función lambda en orden descendente
-						a.sort((o1, o2) -> o2-o1);
-
-						for (int numero : a) System.out.println(numero);
-						</code>
-					</pre>
-				</section>
-				-->
 
 				<!-- Colecciones -->
 				<section>
@@ -530,10 +532,45 @@
 					<h3>Listas</h3>
 					<h4>Consideraciones finales</h4>
 					<p>¿Qué valores de la lista se imprimen en cada for?</p>
-					<p><img src="img/progt05-44.png" alt="ArrayList paso por referencia" /></p>
-					
+					<pre>
+						<code class="hljs" data-trim> 
+						public class Test {
+							int num;
+							public Test(int num){ this.num = num; }
+						}
+						
+						public class TestMain {
+							public static void main(String[] args) {
+								// Cambiar el valor de p1 cambia el valor de la lista
+								Test p1 = new Test(11);
+								Test p2 = new Test(12);
+						
+								LinkedList&lt;Test&gt; lista = new LinkedList&lt;Test&gt;();
+								lista.add(p1);
+								lista.add(p2);
+						
+								p1.num = 44;
+								for(Test t : lista) System.out.println(t.num);
+						
+								// Cambiar el valor de num1 no cambia el valor de la lista
+								int num1 = 10;
+								int num2 = 20;
+								LinkedList&lt;Integer&gt; lista2 = new LinkedList&lt;Integer&gt;();
+								lista2.add(num1);
+								lista2.add(num2);
+						
+								num1 = 44;
+								for(int num: lista2) System.out.println(num);
+
+								// ¿Y lo siguiente cambiaría el valor de la lista?
+								p1 = new Test(99);
+								for(Test t : lista) System.out.println(t.num);
+							}
+						}
+						</code>
+					</pre>					
 					<aside class="notes"><!-- Notas orador (pulsar S) -->
-						El resultado de ejecutar el código anterior es que se muestran los números 44 y 12. El número ha sido modificado y no hemos tenido que volver a insertar el elemento en la lista para que en la lista se cambie también. Esto es porque en la lista no se almacena una copia del objeto Test, sino un apuntador a dicho objeto (solo hay una copia del objeto a la que se hace referencia desde distintos lugares). 
+						El resultado de ejecutar el código anterior es que se muestran los números 44 y 12. El número ha sido modificado y no hemos tenido que volver a insertar el elemento en la lista para que en la lista se cambie también. Esto es porque en la lista no se almacena una copia del objeto Test, sino un apuntador (referencia) a dicho objeto (solo hay una copia del objeto a la que se hace referencia desde distintos lugares). 
 					</aside>
 				</section>
 
@@ -543,8 +580,27 @@
 					<h3>Listas</h3>
 					<h4>Consideraciones finales</h4>
 					<p>Otro ejemplo con los gaticos</p>
-					<p><img src="img/progt05-45.png" alt="ArrayList paso por referencia" /></p>
-				</section>
+					<pre>
+						<code class="hljs" data-trim> 
+							Gato gato1 = new Gato("Garfield", "naranja", "común", 10);
+							Gato gato2 = new Gato("Mishi", "naranja", "común", 5);
+							Gato gato3 = new Gato("Hello kitty", "blanco", "japo", 7);
+
+							ArrayList&lt;Gato&gt; gatos = new ArrayList&lt;Gato&gt;();
+							gatos.add(gato1);
+							gatos.add(gato2);
+							gatos.add(gato3);
+
+							// Cambiar el color de gato1 cambia el color en la lista
+							gato1.setColor("verde");
+							System.out.println(gatos);
+
+							// ¿Y ahora?
+							gato1 = new Gato("Tom", "gris", "común", 8);
+							System.out.println(gatos);							
+						</code>		
+					</pre>		
+					</section>
 
 				<!-- Colecciones -->
 				<section>

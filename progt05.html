@@ -787,6 +787,64 @@
 					</pre>			
 				</section>
 
+				<!-- Métodos -->
+				<section>
+					<h2>Métodos</h2>
+					<h3>toString</h3>
+					<p>Redefiniendo el método <em>toString</em> que viene heredado de <strong>Object</strong> podemos personalizar cómo queremos que se muestre el objeto en un contexto donde se espere un tipo String.</p>		
+					<pre>
+						<code class="hljs" data-trim> 
+							public String toString(){
+								return "Cuenta: " + numero + " de " + titular + ". Saldo: " + saldo;
+							}
+						</code>
+					</pre>			
+				</section>
+
+				<!-- Métodos -->
+				<section>
+					<h2>Métodos</h2>
+					<h3>toString</h3>
+					<p>De esta forma, ya es posible hacer un <em>sout</em> directamente de un objeto y sin obtener la típica referencia como "Cuenta@23fc625e".</p>		
+					<pre>
+						<code class="hljs" data-trim> 
+							System.out.println(cuenta1);
+							// Salida: Cuenta: 123456 de Juan. Saldo: 1000
+						</code>
+					</pre>			
+				</section>
+
+				<!-- Métodos -->
+				<section>
+					<h2>Métodos</h2>
+					<h3>equals</h3>
+					<p>Es interesante definir el método <em>equals</em> para determinar si dos objetos de la misma clase son iguales.</p>		
+					<pre>
+						<code class="hljs" data-trim> 
+							public boolean equals(Cuenta c){
+								return this.numero == c.numero;
+							}
+						</code>
+					</pre>			
+				</section>
+
+				<!-- Métodos -->
+				<section>
+					<h2>Métodos</h2>
+					<h3>equals</h3>
+					<p>Pasa comparar objetos (igual que con las cadenas) se utiliza el método <em>equals</em> y no el operador <em>==</em> que sólo compara las referencias.</p>		
+					<pre>
+						<code class="hljs" data-trim> 
+							Cuenta c1 = new Cuenta();
+							Cuenta c2 = new Cuenta();
+							c1.setNumero(123456);
+							c2.setNumero(123456);
+							System.out.println(c1.equals(c2)); // Salida: true
+							System.out.println(c1 == c2); // Salida: false
+						</code>
+					</pre>			
+				</section>
+
 				<!-- Índice -->
 				<section>
 					<h2>Índice</h2>
