@@ -631,43 +631,57 @@
 					<h3>Listas. Bonus: Programación funcional</h3>
 					<pre>
 						<code class="hljs" data-trim> 
-						public static void main(String[] args) {
-					
-							List&lt;Integer&gt; lista = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+						public class ProgramacionFuncional {
 
-							// 1. Imprimir todos los números de la lista
-							lista.stream().forEach((num) -> System.out.print(num));
-					
-							// 2. Filtrar (mayores de 3), ordenar (de mayor a menor) y presentar
-							lista
-									.stream()
-									.filter((x) -> x>=3)
-									.sorted((o1,o2) -> -(o1-o2))
-									.forEach((n) -> System.out.println(n));
-					
-							// 3. Aplicar transformación (x10) a cada elemento y presentar
-							lista
-									.stream()
-									.map((n) -> n*10)
-									.forEach((n) -> System.out.println(n));
-					
-							// 3. Agrupar todos los elementos para obtener la suma
-							lista
-									.stream()
-									.reduce((n, acu) -> n + acu)
-									.ifPresent(sum -> System.out.println("Suma: " + sum));
-					
-							// 4. Agrupar todos los elementos para obtener el máximo
-							lista
-									.stream()
-									.reduce((n, max) -> {
-										if(n>max) return n;
-										return max;
-									})
-									.ifPresent((max) -> System.out.println("Máximo: " + max));
-					
-							System.out.println("Lista original sin modificar (operaciones no mutables)");
-							System.out.println(lista);
+							// Función para ilustrar el suo de la referencia a método (::) más abajo
+							public static int multiplica10(int num){
+								return num * 10;
+							}
+						
+							public static void main(String[] args) {
+								// Declarar una colección de enteros sin tener que añadirlos 1 a 1 mediante add
+								ArrayList&lt;Integer&gt; lista = new ArrayList&lt;Integer&gt;(Arrays.asList(12,14,5,6,8,9,123,56,78));
+						
+								// 1. Imprimir todos los valores de la lista
+								lista.stream().forEach(num -> System.out.println(num));
+								// Utilizando la notación :: (referencia a método) se puede pasar la declaración de una función sin ejecutarla
+								lista.stream().forEach(System.out::println);
+						
+								System.out.println("--------");
+						
+								// 2. Filtrar mayores de 10, ordenar de mayor a menor e imprimirlos
+								lista
+										.stream()
+										.filter(num -> num>10)
+										.sorted(((o1, o2) -> o2-o1)) // .sorted(Comparator.reverseOrder())
+										.forEach(System.out::println);
+						
+								System.out.println("--------");
+						
+								// 3. Aplicar una transformación a cada elemento de la lista
+								lista
+										.stream()
+										.map(num -> num*10) // .map(ProgramacionFuncional::multiplica10)
+										.forEach(System.out::println);
+						
+								System.out.println("--------");
+						
+								// 4. Obtener un dato agregado de toda la lista
+								lista
+										.stream()
+										.reduce((num, max) -> (num>max) ? num : max)
+										.ifPresent(n -> System.out.println(n)); // .ifPresent(System.out::println);
+						
+								System.out.println("--------");
+						
+								// Copiar a otro ArrayList (mediante su constructor)
+								ArrayList&lt;Integer&gt; lista2 = new ArrayList&lt;Integer&gt;(
+										lista.stream()
+												.filter(num -> num>10)
+												.sorted(((o1, o2) -> o2-o1))
+												.toList()
+								);
+							}
 						}
 						</code>
 					</pre>
@@ -678,6 +692,22 @@
 					<h2>Colecciones</h2>
 					<h3>Listas. Bonus: Programación funcional</h3>
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/E3BU2fvolfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<!-- Colecciones -->
+				<section>
+					<h2>Colecciones</h2>
+					<h3>Listas. Bonus: Programación funcional</h3>
+					<p><strong>Ejercicio:</strong> Tomando de base el ejercicio 8 de la relación, en el que se escogen aleatoriamente 10 cartas de la baraja española, mediante programación funcional:</p>
+					<ul>
+						<li>Muestra todas las cartas en orden normal e inverso.</li>
+						<li>Muestra las cartas ordenadas por palo y valor.</li>
+						<li>Muestra las cartas del palo "espadas" (filter).</li>
+						<li>Muestra el valor numérico de las cartas (map): El as vale 1, la sota 10, el 11 y el rey 12.</li>
+						<li>Muestra los valores de las cartas que valgan más de 7.</li>
+						<li>Muestra la suma de todos los valores de las cartas (reduce).</li>
+						<li></li>
+					</ul>
 				</section>
 
 				<!-- Índice -->

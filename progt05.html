@@ -818,11 +818,21 @@
 				<section>
 					<h2>Métodos</h2>
 					<h3>equals</h3>
-					<p>Es útil definir el método <em>equals</em> para determinar si dos objetos de la misma clase son iguales.</p>		
+					<p>Es útil redefinir el método <em>equals</em> que cualquier clase hereda de <em>Object</em> para determinar si dos objetos de la misma clase son iguales.</p>		
 					<pre>
 						<code class="hljs" data-trim> 
-							public boolean equals(Cuenta c){
-								return this.numero == c.numero;
+							// equals recibe un Object del que habrá que hacer casting a la clase que se trate
+							public boolean equals(Object o) {
+								// Forma 1:
+								//  Cuenta c = (Cuenta) o;
+								//  return this.numero == c.numero;
+									
+								// Forma 2 (mejor):
+								// Si es la misma referencia, directamente son iguales
+								if (this == o) return true;
+								
+								// Se comprueba que el objeto sea instancia de Cuenta y se hace el casting en c
+								return (o instanceof Cuenta c) && this.numero == c.numero;
 							}
 						</code>
 					</pre>			
@@ -843,6 +853,14 @@
 							System.out.println(c1 == c2); // Salida: false
 						</code>
 					</pre>			
+				</section>
+
+				<!-- Métodos -->
+				<section>
+					<h2>Métodos</h2>
+					<h3>equals</h3>
+					<p>Aparte del uso de <em>equals</em> de forma explícita como en el ejemplo anterior, es usado de forma implícita por otros métodos.</p>
+					<p>Como por ejemplo, en el método <span class="naranja">contains</span> o <span class="naranja">indexOf</span> para comprobar si un objeto existe o devolver su posición respectivamente en una colección (se estudiarán más adelante).</p>			
 				</section>
 
 				<!-- Índice -->
