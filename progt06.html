@@ -971,6 +971,92 @@
 					<p>Continuando con las clases anteriores de Persona, Alumno y Profesor, implementa una clase <em>GestionPersonas</em> que contenga un array de Persona y un método imprimirPersonal() que llame a los métodos mostrar() de cada elemento del array.</p>
 					<p>Prueba en el Main a crear varios alumnos y profesores. Después llama a imprimirPersonal() para comprobar que la ligadura dinámica realiza su función correctamente.</p>
 				</section>
+
+				<!-- Polimorfismo -->
+				<section>
+					<h2>Polimorfismo y ligadura dinámica</h2>
+					<p>Gracias a la <em>ligadura dinámica</em> hemos visto que se puede <span class="naranja">llamar a un método cómun</span> de las subclases en tiempo de ejecución.</p>
+					<p>Pero, ¿qué pasa si queremos llamar a un método propio de la subclase?</p>
+					<p class="fragment">Es necesario hacer <span class="violeta">casting a la subclase</span>.</p>
+				</section>
+
+				<!-- Polimorfismo -->
+				<section>
+					<h2>Polimorfismo y ligadura dinámica</h2>
+					<p>Veamos cómo hacer <span class="violeta">casting a la subclase</span> para llamar a un método específico de ella, pero antes hay que comprobar su tipo mediante <em>instanceof</em></p>
+					<pre>
+						<code class="hljs" data-trim> 
+						Scanner s = new Scanner(System.in);
+						System.out.println("Introduce un número: ");
+						int num = Integer.parseInt(s.nextLine());
+
+						// persona es polimórfico
+						Persona persona;
+
+						// No sabemos si se va a instanciar un Alumno o un Profesor en tiempo de compilación
+						if(num % 2 == 0){
+							persona = new Alumno("David", "Galán", LocalDate.of(2005, 5, 10), "DAW", 7.2);
+						}else{
+							persona = new Profesor("Don Antonio", "Toranzo", LocalDate.of(1966, 6, 13), "LM", 2250.75);
+						}
+
+						// Comprobación de tipo y casting a Alumno para llamar a métodos específicos
+						if(persona instanceof Alumno){
+							Alumno alumno = (Alumno) persona;
+							alumno.suspender(); // Método específico de Alumno
+						}
+
+						// MEJOR! Casting directamente en el instanceof
+						if(persona instanceof Alumno alumno){
+							alumno.suspender(); // Método específico de Alumno
+						}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Polimorfismo -->
+				<section>
+					<h2>Polimorfismo y ligadura dinámica</h2>
+					<p>Otra formas de comprobar el tipo de un objeto antes de hacer el casting:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+						// Forma 1
+						if(persona.getClass() == Alumno.class){
+							Alumno alumno = (Alumno) persona;
+							alumno.suspender(); // Método específico de Alumno
+						}
+				
+						// Forma 2
+						if(persona.getClass().getSimpleName().equals("Alumno")){
+							Alumno alumno = (Alumno) persona;
+							alumno.suspender(); // Método específico de Alumno
+						}
+
+						// Forma 3
+						if(persona instanceof Alumno){
+							Alumno alumno = (Alumno) persona;
+							alumno.suspender(); // Método específico de Alumno
+						}
+
+						// MEJOR! Casting directamente en el instanceof
+						if(persona instanceof Alumno alumno){
+							alumno.suspender(); // Método específico de Alumno
+						}
+						</code>
+					</pre>
+				</section>
+
+				<!-- Polimorfismo -->
+				<section>
+					<h2>Polimorfismo y ligadura dinámica</h2>
+					<h3>Ejercicio: Gestion Personal</h3>
+					<p>Continúa con el ejercicio añadiendo un menú con diferentes opciones para:</p>
+					<ul>
+						<li>Insertar alumnos y profesores.</li>
+						<li>Mostrarlos todos.</li>
+						<li>Seleccionar una pesona del array y realizar funciones específicas según se trate de un alumno (suspender, aprobar, cambiar grupo...) o un profesor (subir el sueldo, cambiar asignatura...).</li>
+					</ul>
+				</section>
 			
 				<!-- Para repasar -->
 				<section>
