@@ -548,7 +548,7 @@
 							Properties properties = new Properties();
 							// 3 formas de escribir el objeto properties a fichero
 							properties.store(new FileWriter("archivo.properties"), "Comentarios");
-							properties.store(new BufferedWriter(new FileWriter("archivo.properties")), "Comentarios");
+							properties.store(new BufferedWriter(new FileWriter("archivo.properties"), "Comentarios");
 							properties.store(new FileOutputStream("archivo.properties"), "Comentarios");
 						</code>
 					</pre>
