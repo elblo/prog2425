@@ -527,7 +527,7 @@
 				<section>
 					<h2>Properties</h2>
 					<p>El archivo Properties también se puede editar directamente desde un editor de texto plano.</p>
-					<p>Para utilizarlo desde Java hay que instanciar un objeto de la clase Properties y recuperar el contenido del archivo mediante load:</p>
+					<p>Para utilizarlo desde Java hay que instanciar un objeto de la clase Properties y recuperar el contenido del archivo mediante <em>load</em>:</p>
 					<pre>
 						<code class="hljs" data-trim> 
 							Properties properties = new Properties();
@@ -535,6 +535,21 @@
 							properties.load(new FileReader("archivo.properties"));
 							properties.load(new BufferedReader(new FileReader("archivo.properties")));
 							properties.load(new FileInputStream("archivo.properties"));
+						</code>
+					</pre>
+				</section>
+
+				<!-- Properties -->
+				<section>
+					<h2>Properties</h2>
+					<p>Para guardar los cambios en fichero del objeto Properties se puede hacer también de 3 formas mediante <em>store</em>:</p>
+					<pre>
+						<code class="hljs" data-trim> 
+							Properties properties = new Properties();
+							// 3 formas de escribir el objeto properties a fichero
+							properties.store(new FileWriter("archivo.properties"), "Comentarios");
+							properties.store(new BufferedWriter(new FileWriter("archivo.properties")), "Comentarios");
+							properties.store(new FileOutputStream("archivo.properties"), "Comentarios");
 						</code>
 					</pre>
 				</section>
@@ -552,9 +567,8 @@
 							properties.setProperty("lastAccess", LocalDate.now().toString());
 							properties.setProperty("language", "ES");
 
-							// Escribir a fichero
-							FileOutputStream fos = new FileOutputStream("archivo.properties");
-							properties.store(fos, "Fichero de configuración");
+							// Escribir el objeto properties a fichero
+							properties.store(new FileWriter("archivo.properties"), "Fichero de configuración");
 						</code>
 					</pre>
 				</section>
@@ -568,7 +582,7 @@
 							// Crear objeto Properties
 							Properties properties = new Properties();
 
-							// Cargar propiedades de fichero
+							// Cargar propiedades al objeto properties desde fichero
 							properties.load(new FileReader("archivo.properties"));
 
 							// Leer propiedades
